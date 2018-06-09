@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ismael.chatprogramator.menu"
+    android:background="@drawable/fondo7"
+    >
+
+    <Button
+        android:id="@+id/btn_Nuevo"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="91dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="62dp"
+        android:background="@drawable/boton7"
+        android:onClick="Nuevo"
+        android:text="Nuevo Mensaje"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="lollipop" />
+
+    <Button
+        android:id="@+id/btn_Lista"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="91dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/boton7"
+        android:onClick="lista"
+        android:text="Mostrar Lista De Mensajes"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Nuevo"
+        tools:targetApi="lollipop" />
+
+    <Button
+        android:id="@+id/btn_Salir"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="91dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/boton7"
+        android:onClick="salir"
+        android:text="Salir"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Lista"
+        tools:targetApi="lollipop" />
+</android.support.constraint.ConstraintLayout>
