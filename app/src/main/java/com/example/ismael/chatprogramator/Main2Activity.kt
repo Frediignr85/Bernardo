@@ -1,8 +1,10 @@
 package com.example.ismael.chatprogramator
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Intent
+import android.content.ContentValues
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
+import android.database.sqlite.SQLiteDatabase
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -10,18 +12,25 @@ import android.os.Handler
 import android.support.annotation.RequiresApi
 import android.view.View
 import android.widget.Toast
+import com.example.ismael.chatprogramator.BD.BaseDeDatos
+import com.example.ismael.chatprogramator.BD.addDatos
 import kotlinx.android.synthetic.main.activity_main2.*
+import java.sql.RowId
 import java.util.*
-
+var Id=1
 var Prefs: SharedPreferences?=null
 var NombrePreferencia: String ="com.example.ismael.chatprogramator.datos"
 
-class Main2Activity : AppCompatActivity() {
+public  class Main2Activity : AppCompatActivity() {
  val funcion= Funciones()
+    var Objeto = BaseDeDatos(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Toast.makeText(this, Objeto.GeneradorId(),Toast.LENGTH_LONG)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main2)
         Prefs = this.getSharedPreferences(NombrePreferencia,0)
+
     }
 
 
@@ -67,6 +76,7 @@ class Main2Activity : AppCompatActivity() {
     }
 
     fun Guardar(view: View) {
+        var Objeto = BaseDeDatos(this)
         if(et_Telefono.text.toString()==""||et_Mensaje.text.toString()=="")
         {
             Toast.makeText(this, "Espacios Obligatorios Vacios", Toast.LENGTH_LONG).show()
@@ -77,8 +87,14 @@ class Main2Activity : AppCompatActivity() {
             Nombre = et_Nombre.text.toString()
             funcion.pulsar(btn_Guardar)
             funcion.alarma(Numero.toInt(),this, hora, minutos, dia, mes, anio)
-            Toast.makeText(this, "Datos guardados correctamente", Toast.LENGTH_LONG).show()
+
             AsignarDatos(Mensaje, Numero, Nombre)
+            val Llenar = addDatos(Nombre, Numero,Mensaje)
+
+           var id:Int
+           // id=Objeto.GeneradorId()
+            Objeto.AgregarAlarmas( Llenar)
+            Toast.makeText(this, "Datos Guardados Exitosamente", Toast.LENGTH_LONG).show()
             Handler().postDelayed({
                 et_Telefono.setText("")
                 et_Mensaje.setText("")
@@ -109,7 +125,12 @@ class Main2Activity : AppCompatActivity() {
         editor.putString("Numero", Numero)
         editor.putString("Nombre", Nombre)
         editor.apply()
+    }
 
+    fun CoBD():BaseDeDatos
+    {
+        val objeto = BaseDeDatos(this)
+        return objeto
     }
 
 }

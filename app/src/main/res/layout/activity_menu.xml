@@ -17,6 +17,7 @@
         android:layout_marginTop="62dp"
         android:background="@drawable/boton7"
         android:onClick="Nuevo"
+        android:textColor="#23819C"
         android:text="Nuevo Mensaje"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +34,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/boton7"
         android:onClick="lista"
+        android:textColor="#23819C"
         android:text="Mostrar Lista De Mensajes"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,9 +52,24 @@
         android:background="@drawable/boton7"
         android:onClick="salir"
         android:text="Salir"
+        android:textColor="#23819C"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_Lista"
         tools:targetApi="lollipop" />
+
+    <Button
+        android:id="@+id/btnBorrar"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="29dp"
+        android:background="@drawable/boton7"
+        android:onClick="deleteData"
+        android:text="Borrar"
+        android:textColor="#23819C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
